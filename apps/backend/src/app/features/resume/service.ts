@@ -25,6 +25,10 @@ export class ResumeService {
     try {
       const resumeText = await this._docParserService.parseDocument(resumeFile);
 
+      if (resumeText.length === 0) {
+        throw new BadRequestException('Resume text is empty');
+      }
+
       return await this._openaiService.performResumeAnalysis(
         resumeText,
         jobDescription,

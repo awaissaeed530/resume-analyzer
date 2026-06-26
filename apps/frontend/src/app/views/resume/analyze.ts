@@ -30,7 +30,13 @@ export class AnalyzeResumeComponent {
 
     const request = this.form.value;
 
-    if (!request.resume || !request.jobDescription) {
+    if (!request.resume) {
+      this._toast.warning('Please select a resume file');
+      return;
+    }
+
+    if (!request.jobDescription) {
+      this._toast.warning('Please enter a job description');
       return;
     }
 
