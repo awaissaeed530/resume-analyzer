@@ -4,14 +4,16 @@ import OpenAI from 'openai';
 @Injectable()
 export class OpenAiService {
   private readonly client: OpenAI;
+  private readonly model: string;
 
   constructor() {
     this.client = new OpenAI();
+    this.model = process.env.OPENAI_MODEL || 'gpt-5-pro';
   }
 
-  async generateResponse(model: string, input: string): Promise<string> {
+  async generateResponse(input: string): Promise<string> {
     const response = await this.client.responses.create({
-      model,
+      model: this.model,
       input,
     });
 

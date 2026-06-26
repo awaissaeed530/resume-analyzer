@@ -1,16 +1,12 @@
-import {
-  IsDefined,
-  IsNotEmpty,
-  IsNotEmptyObject,
-  IsString,
-} from 'class-validator';
-import type { MulterFile } from 'nestjs-busboy';
+import { IsDefined, IsNotEmpty, IsString } from 'class-validator';
+
+export const ACCEPTED_MIME_TYPES = [
+  'text/plain',
+  'application/pdf',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+];
 
 export class AnalyzeResumeRequest {
-  @IsDefined()
-  @IsNotEmptyObject()
-  resumeFile: MulterFile;
-
   @IsDefined()
   @IsNotEmpty()
   @IsString()

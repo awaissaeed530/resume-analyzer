@@ -20,7 +20,8 @@
     "nestjs-busboy": "1.0.1",
     "openai": "6.45.0",
     "reflect-metadata": "0.2.2",
-    "rxjs": "7.8.2"
+    "rxjs": "7.8.2",
+    "unpdf": "1.6.2"
   },
   "devDependencies": {
     "@angular-devkit/core": "21.2.17",
