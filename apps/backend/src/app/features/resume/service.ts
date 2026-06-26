@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import type { MulterFile } from 'nestjs-busboy';
 import { DocParserService, OpenAiService } from '../../core';
 import { AnalyzeResumeRequest, AnalyzeResumeResponse } from './types';
@@ -22,11 +22,16 @@ export class ResumeService {
       message: `Recieved ${resumeFile.mimetype} resume file`,
     });
 
-    const resumeText = await this._docParserService.parseDocument(resumeFile);
+    try {
+      const resumeText = await this._docParserService.parseDocument(resumeFile);
 
-    return this._openaiService.performResumeAnalysis(
-      resumeText,
-      jobDescription,
-    );
+      return this._openaiService.performResumeAnalysis(
+        resumeText,
+        jobDescription,
+      );
+    } catch (error) {
+      this.logger.error(error);
+      throw new BadRequestException(error!.message);
+    }
   }
 }

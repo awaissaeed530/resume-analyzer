@@ -3,6 +3,7 @@ import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AnalyzeResumeResponse, ApiService } from '../../core';
 import { finalize, tap } from 'rxjs';
 import { ResumeAnalysisComponent } from './analysis/analysis';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 @Component({
   selector: 'app-analyze-resume',
@@ -11,14 +12,15 @@ import { ResumeAnalysisComponent } from './analysis/analysis';
 })
 export class AnalyzeResumeComponent {
   private readonly _apiService = inject(ApiService);
-  private readonly formBuilder = inject(NonNullableFormBuilder);
+  private readonly _formBuilder = inject(NonNullableFormBuilder);
+  private readonly _toast = inject(HotToastService);
 
   readonly analysis = signal<AnalyzeResumeResponse | null>(null);
   readonly loading = signal(false);
 
-  readonly form = this.formBuilder.group({
-    resume: this.formBuilder.control<File | null>(null),
-    jobDescription: this.formBuilder.control<string>(''),
+  readonly form = this._formBuilder.group({
+    resume: this._formBuilder.control<File | null>(null),
+    jobDescription: this._formBuilder.control<string>(''),
   });
 
   submit(): void {
@@ -41,6 +43,9 @@ export class AnalyzeResumeComponent {
       .subscribe({
         next: (analysis) => {
           this.analysis.set(analysis);
+        },
+        error: (error) => {
+          this._toast.error(error.message);
         },
       });
   }

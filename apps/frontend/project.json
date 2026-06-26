@@ -20,7 +20,10 @@
             "input": "apps/frontend/public"
           }
         ],
-        "styles": ["apps/frontend/src/styles.css"]
+        "styles": [
+          "apps/frontend/src/styles.css",
+          "node_modules/@ngxpert/hot-toast/src/styles/styles.css"
+        ]
       },
       "configurations": {
         "production": {

@@ -37,18 +37,19 @@
         >
         <h3 class="font-bold text-slate-900 tracking-tight">Key Strengths</h3>
       </div>
-      <ul class="space-y-3 flex-1">
+      <div class="flex flex-wrap gap-2">
         @for(strength of analysis().strengths; track strength) {
-        <li
-          class="flex items-start gap-3 text-sm text-slate-600 leading-relaxed"
+        <span
+          class="inline-flex items-center px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-50 text-emerald-600 border border-emerald-100 shadow-sm transition hover:bg-rose-100"
         >
-          <span
-            class="h-1.5 w-1.5 rounded-full bg-emerald-500 mt-2 shrink-0"
-          ></span>
-          <span>{{ strength }}</span>
-        </li>
+          {{ strength }}
+        </span>
+        } @empty {
+        <p class="text-sm text-slate-400 italic">
+          No critical structural tool gaps detected.
+        </p>
         }
-      </ul>
+      </div>
     </div>
 
     <div
