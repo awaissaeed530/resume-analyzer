@@ -43,7 +43,7 @@ export class AnalyzeResumeComponent {
           this.analysis.set(analysis);
         },
         error: (error) => {
-          this._toast.error(error.message);
+          this._toast.error(error.error.message);
         },
       });
   }

@@ -25,13 +25,11 @@ export class ResumeService {
     try {
       const resumeText = await this._docParserService.parseDocument(resumeFile);
 
-      return this._openaiService.performResumeAnalysis(
+      return await this._openaiService.performResumeAnalysis(
         resumeText,
         jobDescription,
       );
     } catch (error) {
-      this.logger.error(error);
-
       if (error instanceof Error && error.message) {
         throw new BadRequestException(error.message);
       }
