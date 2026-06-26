@@ -19,26 +19,14 @@ export class ResumeService {
     const { jobDescription } = request;
 
     this.logger.log({
-      message: `Recieved resume file ${resumeFile.filename}`,
-      resumeFile,
+      message: `Recieved ${resumeFile.mimetype} resume file`,
     });
 
     const resumeText = await this._docParserService.parseDocument(resumeFile);
 
-    this.logger.log({ message: 'Parsed document content', resumeText });
-
-    const analysis = await this._openaiService.generateResponse(resumeText);
-
-    this.logger.log('AI analysis complete', analysis);
-
-    console.log(analysis);
-
-    return {
-      matchScore: 100,
-      strengths: [],
-      missingSkills: [],
-      suggestedImprovements: [],
-      interviewRecommendations: [],
-    };
+    return this._openaiService.performResumeAnalysis(
+      resumeText,
+      jobDescription,
+    );
   }
 }
