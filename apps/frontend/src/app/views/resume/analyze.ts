@@ -1,9 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { AnalyzeResumeResponse, ApiService } from '../../core';
-import { finalize, tap } from 'rxjs';
-import { ResumeAnalysisComponent } from './analysis/analysis';
 import { HotToastService } from '@ngxpert/hot-toast';
+import { finalize } from 'rxjs';
+import { AnalyzeResumeResponse, ApiService } from '../../core';
+import { ResumeAnalysisComponent } from './analysis/analysis';
 
 @Component({
   selector: 'app-analyze-resume',
@@ -34,12 +34,10 @@ export class AnalyzeResumeComponent {
       return;
     }
 
+    this.loading.set(true);
     this._apiService
       .analyzeResume(request.resume, request.jobDescription)
-      .pipe(
-        tap(() => this.loading.set(true)),
-        finalize(() => this.loading.set(false)),
-      )
+      .pipe(finalize(() => this.loading.set(false)))
       .subscribe({
         next: (analysis) => {
           this.analysis.set(analysis);

@@ -30,7 +30,8 @@
     <div class="pt-2">
       <button
         type="submit"
-        class="cursor-pointer w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm py-3 px-4 rounded-xl shadow-md shadow-indigo-100 hover:shadow-none focus:ring-4 focus:ring-indigo-200 transition duration-200 ease-in-out active:scale-[0.99]"
+        class="cursor-pointer w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm py-3 px-4 rounded-xl shadow-md shadow-indigo-100 hover:shadow-none focus:ring-4 focus:ring-indigo-200 transition duration-200 ease-in-out active:scale-[0.99] disabled:bg-gray-600 disabled:cursor-not-allowed"
+        [disabled]="loading()"
       >
         {{loading() ? 'Analyzing resume...' : 'Analyze Match'}}
       </button>
