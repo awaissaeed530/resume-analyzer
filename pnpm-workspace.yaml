@@ -2,7 +2,10 @@ packages:
   - 'packages/*'
 allowBuilds:
   '@parcel/watcher': true
-  '@swc/core': set this to true or false
+  '@swc/core': true
+  esbuild: true
   less: true
-  nx: set this to true or false
+  lmdb: true
+  msgpackr-extract: true
+  nx: true
   unrs-resolver: true
