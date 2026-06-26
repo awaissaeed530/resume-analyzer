@@ -9,4 +9,5 @@ allowBuilds:
   msgpackr-extract: true
   nestjs-busboy: true
   nx: true
+  tesseract.js: true
   unrs-resolver: true

@@ -31,7 +31,12 @@ export class ResumeService {
       );
     } catch (error) {
       this.logger.error(error);
-      throw new BadRequestException(error!.message);
+
+      if (error instanceof Error && error.message) {
+        throw new BadRequestException(error.message);
+      }
+
+      throw new BadRequestException('An unexpected error occurred');
     }
   }
 }

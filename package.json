@@ -21,6 +21,7 @@
     "class-validator": "0.15.1",
     "dotenv": "17.4.2",
     "nestjs-busboy": "1.0.1",
+    "officeparser": "^7.2.1",
     "openai": "6.45.0",
     "reflect-metadata": "0.2.2",
     "rxjs": "7.8.2",
