@@ -51,10 +51,10 @@
       "defaultConfiguration": "development",
       "configurations": {
         "production": {
-          "buildTarget": "resume-analyzer:build:production"
+          "buildTarget": "frontend:build:production"
         },
         "development": {
-          "buildTarget": "resume-analyzer:build:development"
+          "buildTarget": "frontend:build:development"
         }
       }
     },
@@ -65,7 +65,7 @@
       "continuous": true,
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "resume-analyzer:build",
+        "buildTarget": "frontend:build",
         "staticFilePath": "dist/apps/frontend/browser",
         "spa": true
       }
