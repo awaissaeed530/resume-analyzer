@@ -1,0 +1,82 @@
+<header
+  class="w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors duration-200"
+>
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+  >
+    <div class="flex items-center gap-3">
+      <div
+        class="p-2 bg-indigo-600 dark:bg-indigo-500 text-white rounded-xl shadow-sm shadow-indigo-100 dark:shadow-none"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="w-5 h-5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+          />
+        </svg>
+      </div>
+      <h1
+        class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-50"
+      >
+        Resume Analysis
+      </h1>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <button
+        type="button"
+        (click)="toggleTheme()"
+        [attr.aria-label]="isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode'"
+        class="cursor-pointer relative p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all duration-200"
+      >
+        <svg
+          [class.scale-100]="isDarkMode()"
+          [class.rotate-0]="isDarkMode()"
+          [class.scale-0]="!isDarkMode()"
+          [class.-rotate-90]="!isDarkMode()"
+          class="w-5 h-5 transform absolute inset-0 m-auto transition-all duration-200"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 3v2.25m0 13.5V21M4.22 4.22l1.58 1.58m12.42 12.42l1.58 1.58M3 12h2.25m13.5 0H21M4.22 19.78l1.58-1.58M17.78 5.63l1.58-1.58M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Z"
+          />
+        </svg>
+
+        <svg
+          [class.scale-0]="isDarkMode()"
+          [class.rotate-90]="isDarkMode()"
+          [class.scale-100]="!isDarkMode()"
+          [class.rotate-0]="!isDarkMode()"
+          class="w-5 h-5 transform absolute inset-0 m-auto transition-all duration-200"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+          />
+        </svg>
+
+        <div class="w-5 h-5 invisible"></div>
+      </button>
+    </div>
+  </div>
+</header>

@@ -4,11 +4,17 @@ import { HotToastService } from '@ngxpert/hot-toast';
 import { finalize } from 'rxjs';
 import { AnalyzeResumeResponse, ApiService } from '../../core';
 import { ResumeAnalysisComponent } from './analysis/analysis';
+import { LucideCheck, LucideCloudUpload } from '@lucide/angular';
 
 @Component({
   selector: 'app-analyze-resume',
   templateUrl: './analyze.html',
-  imports: [ReactiveFormsModule, ResumeAnalysisComponent],
+  imports: [
+    ReactiveFormsModule,
+    ResumeAnalysisComponent,
+    LucideCloudUpload,
+    LucideCheck,
+  ],
 })
 export class AnalyzeResumeComponent {
   private readonly _apiService = inject(ApiService);
