@@ -4,6 +4,7 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
+import { fastifyCors } from '@fastify/cors';
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
@@ -11,6 +12,10 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter(),
   );
+
+  app.register(fastifyCors, {
+    origin: '*',
+  });
 
   app.useGlobalPipes(new ValidationPipe());
 
