@@ -4,4 +4,5 @@ export class AnalyzeResumeResponse {
   missingSkills: string[];
   suggestedImprovements: string[];
   interviewRecommendations: string[];
+  tokens?: number;
 }
