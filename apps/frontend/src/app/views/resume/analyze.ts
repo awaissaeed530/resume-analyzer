@@ -17,6 +17,7 @@ export class AnalyzeResumeComponent {
 
   readonly analysis = signal<AnalyzeResumeResponse | null>(null);
   readonly loading = signal(false);
+  readonly isDragging = signal(false);
 
   readonly form = this._formBuilder.group({
     resume: this._formBuilder.control<File | null>(null),
@@ -56,12 +57,28 @@ export class AnalyzeResumeComponent {
 
   onFileChange(event: Event): void {
     const element = event.target as HTMLInputElement;
-
     if (element.files && element.files.length > 0) {
-      const file = element.files[0];
-
-      this.form.controls.resume.setValue(file);
-      this.form.controls.resume.updateValueAndValidity();
+      this.handleFile(element.files[0]);
     }
+  }
+
+  onFileDropped(event: DragEvent): void {
+    event.preventDefault();
+    this.isDragging.set(false);
+
+    if (event.dataTransfer?.files && event.dataTransfer.files.length > 0) {
+      this.handleFile(event.dataTransfer.files[0]);
+    }
+  }
+
+  private handleFile(file: File): void {
+    this.form.controls.resume.setValue(file);
+    this.form.controls.resume.updateValueAndValidity();
+  }
+
+  clearFile(event: Event): void {
+    event.stopPropagation();
+    this.form.patchValue({ resume: null });
+    this.form.get('resume')?.updateValueAndValidity();
   }
 }

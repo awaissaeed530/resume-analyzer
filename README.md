@@ -32,7 +32,6 @@ pnpm nx run frontend:serve
 - Angular (frontend)
 - Tailwindcss (styles)
 
-
 ## Screeshots
 ![Screenshot 1](./docs/screenshots/1.png)
 ![Screenshot 2](./docs/screenshots/2.png)

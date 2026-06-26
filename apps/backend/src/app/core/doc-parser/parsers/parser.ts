@@ -9,6 +9,7 @@ export enum DocType {
   Pdf = 'pdf',
 }
 
+/** Retrieve {@link DocType} for given MIME type */
 export function docTypeFromMime(mime: string): DocType {
   switch (mime) {
     case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
@@ -26,6 +27,7 @@ export interface IDocParser {
   parse(file: MulterFile): Promise<string>;
 }
 
+/** Returns appropriate {@link IDocParser} for given {@link DocType} */
 export function getParser(docType: DocType): IDocParser {
   switch (docType) {
     case DocType.Pdf:

@@ -12,6 +12,7 @@ export class ResumeService {
     private readonly _docParserService: DocParserService,
   ) {}
 
+  /** Analyzes the resume against provided job description */
   async analyzeResume(
     resumeFile: MulterFile,
     request: AnalyzeResumeRequest,

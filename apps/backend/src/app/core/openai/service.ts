@@ -26,14 +26,17 @@ const ResumeAnalysisSchema = z.object({
 });
 type ResumeAnalysisResponse = z.infer<typeof ResumeAnalysisSchema>;
 
+/** Retry policy for OpenAI API calls. Retries up to 3 times with exponential backoff. */
 const retryPolicy = retry(handleAll, {
   maxAttempts: 3,
   backoff: new ExponentialBackoff(),
 });
+/** Circuit breaker policy, breaks after 3 consecutive failures, with a half-open period of 10 seconds. */
 const circuitBreakerPolicy = circuitBreaker(handleAll, {
   halfOpenAfter: 10 * 1000,
   breaker: new ConsecutiveBreaker(3),
 });
+/** Timeout policy, with aggressive 30 second timeout strategy */
 const timeoutPolicy = timeout(30_000, TimeoutStrategy.Aggressive);
 const resilianyPolicy = wrap(timeoutPolicy, retryPolicy, circuitBreakerPolicy);
 
@@ -49,6 +52,7 @@ export class OpenAiService {
     this.model = OPENAI_CONFIG.MODEL;
   }
 
+  /** Perform resume analysis using OpenAI API */
   async performResumeAnalysis(
     resume: string,
     jobDescription: string,
