@@ -8,5 +8,6 @@ allowBuilds:
   less: true
   lmdb: true
   msgpackr-extract: true
+  nestjs-busboy: true
   nx: true
   unrs-resolver: true

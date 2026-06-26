@@ -42,7 +42,6 @@
       }
     }
   ],
-  "analytics": false,
   "targetDefaults": {
     "@angular/build:application": {
       "cache": true,
@@ -68,5 +67,9 @@
       "style": "css",
       "unitTestRunner": "none"
     }
+  },
+  "analytics": false,
+  "tui": {
+    "enabled": false
   }
 }
